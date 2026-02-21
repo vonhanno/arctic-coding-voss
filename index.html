@@ -347,7 +347,7 @@
   <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden bg-bg">
     <!-- Video Background -->
     <div class="absolute inset-0 z-0">
-      <video autoplay muted loop playsinline class="w-full h-full object-cover" poster="https://images.citybreakcdn.com/image.aspx?ImageId=14544909&width=1920&height=1080&fitaspect=1">
+      <video id="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" class="w-full h-full object-cover" poster="https://images.citybreakcdn.com/image.aspx?ImageId=14544909&width=1920&height=1080&fitaspect=1">
         <source src="https://framerusercontent.com/assets/5BjJf8OFNVy9POQ9UZvKZru2OJU.mp4" type="video/mp4">
       </video>
       <div class="absolute inset-0 bg-gradient-to-b from-bg/55 via-bg/40 to-bg/85"></div>
@@ -448,12 +448,8 @@
           <div class="text-xs font-body text-lovable uppercase tracking-[3px] mb-2">Step 1</div>
           <h3 class="font-display font-bold text-xl text-text-primary mb-3">Build</h3>
           <p class="text-text-muted text-sm leading-relaxed">
-            Learn to use Lovable -describe what you want in plain language, and AI builds it for you. Go from idea to working app in hours. Zero coding needed.
+            You've played around with vibe coding. Now go deeper. Structure your idea, build a real prototype, and get it ready for the next level. From scattered prompts to a solid foundation.
           </p>
-          <div class="mt-6 flex items-center gap-2 text-xs text-text-muted">
-            <span class="w-2 h-2 rounded-full bg-lovable"></span>
-            Lovable
-          </div>
         </div>
 
         <!-- Step 2: Iterate -->
@@ -466,10 +462,6 @@
           <p class="text-text-muted text-sm leading-relaxed">
             Test and improve your ideas. Get feedback from fellow builders, refine your concept -then learn to use Claude Code and develop your prototype into a real product.
           </p>
-          <div class="mt-6 flex items-center gap-2 text-xs text-text-muted">
-            <span class="w-2 h-2 rounded-full bg-lovable"></span>
-            Lovable <span class="text-text-muted/50">&rarr;</span> <span class="w-2 h-2 rounded-full bg-claude"></span> Claude Code
-          </div>
         </div>
 
         <!-- Step 3: Ship -->
@@ -482,10 +474,6 @@
           <p class="text-text-muted text-sm leading-relaxed">
             Deploy your app to the world with Claude Code. Polish, launch, and leave the retreat with something real and live.
           </p>
-          <div class="mt-6 flex items-center gap-2 text-xs text-text-muted">
-            <span class="w-2 h-2 rounded-full bg-claude"></span>
-            Claude Code
-          </div>
         </div>
       </div>
 
@@ -1018,6 +1006,21 @@
       duration: 700,
       easing: 'ease-out-cubic',
     });
+
+    // Hero video mobile autoplay fallback
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+      heroVideo.muted = true;
+      const playPromise = heroVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          document.addEventListener('touchstart', function playOnTouch() {
+            heroVideo.play();
+            document.removeEventListener('touchstart', playOnTouch);
+          }, { once: true });
+        });
+      }
+    }
 
     // FAQ Accordion
     function toggleFAQ(btn) {
