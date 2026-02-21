@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arctic Coding — From Build to Ship. In the Arctic.</title>
+  <meta name="description" content="No coding experience needed. Learn to vibe code and build real apps with AI in 3 nights in the Norwegian mountains. May 2026, Voss, Norway.">
+  <meta property="og:title" content="Arctic Coding — From Idea to App. No Coding Required.">
+  <meta property="og:description" content="No coding experience needed. Learn to vibe code and build real apps with AI in 3 nights in the Norwegian mountains. May 2026, Voss, Norway. 25 spots.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.citybreakcdn.com/image.aspx?ImageId=14544909&width=1200&height=630&fitaspect=1">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛰️</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0a0a0f',
+            card: '#111118',
+            'card-hover': '#1a1a24',
+            'text-primary': '#f5f5f7',
+            'text-muted': '#8b8b9e',
+            lime: '#b4f54e',
+            'lime-dark': '#8bc43a',
+            lovable: '#c8b2ea',
+            claude: '#D97706',
+            cream: '#fff9e8',
+            sage: '#afbdb3',
+          },
+          fontFamily: {
+            display: ['Unbounded', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0a0a0f;
+      color: #f5f5f7;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* Grain Overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* Aurora Borealis Gradient Text */
+    @keyframes aurora {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .gradient-text {
+      background: linear-gradient(
+        135deg,
+        #e8ffe0 0%,
+        #d4f5c8 20%,
+        #e0d8f0 40%,
+        #c8eef5 60%,
+        #e8ffe0 80%,
+        #d4f5c8 100%
+      );
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: aurora 12s ease infinite;
+    }
+    .gradient-text::selection {
+      -webkit-text-fill-color: #0a0a0f;
+      background: #b4f54e;
+    }
+
+    /* Glassmorphic Card */
+    .glass {
+      background: rgba(17, 17, 24, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .glass-hover {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .glass-hover:hover {
+      background: rgba(26, 26, 36, 0.8);
+      border-color: rgba(180, 245, 78, 0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(180, 245, 78, 0.05);
+    }
+
+    /* CTA Button */
+    .cta-btn {
+      background: #b4f54e;
+      color: #0a0a0f;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 60px;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 62px;
+      background: #b4f54e;
+      filter: blur(20px);
+      opacity: 0.3;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 40px rgba(180, 245, 78, 0.35);
+    }
+    .cta-btn:hover::after { opacity: 0.5; }
+
+    .cta-btn-sm {
+      padding: 12px 28px;
+      font-size: 13px;
+    }
+
+    /* Nav */
+    .nav-blur {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(10, 10, 15, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .nav-link {
+      color: #8b8b9e;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+    .nav-link:hover { color: #f5f5f7; }
+
+    /* Scroll indicator */
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); opacity: 0.6; }
+      50% { transform: translateY(10px); opacity: 1; }
+    }
+    .scroll-indicator { animation: bounceDown 2s infinite; }
+
+    /* Hero parallax */
+    .hero-bg {
+      background-image:
+        linear-gradient(to bottom, rgba(10, 10, 15, 0.55) 0%, rgba(10, 10, 15, 0.4) 40%, rgba(10, 10, 15, 0.85) 100%),
+        url('https://images.citybreakcdn.com/image.aspx?ImageId=14544909&width=1920&height=1080&fitaspect=1');
+      background-size: cover;
+      background-position: center 30%;
+      background-attachment: fixed;
+    }
+    @media (max-width: 768px) {
+      .hero-bg { background-attachment: scroll; }
+    }
+
+    /* FAQ */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.3s ease;
+    }
+    .faq-answer.open { max-height: 300px; }
+    .faq-toggle svg { transition: transform 0.3s ease; }
+    .faq-toggle.open svg { transform: rotate(45deg); }
+
+    /* Timeline connector */
+    .timeline-line {
+      background: linear-gradient(to right, #c8b2ea, #b4f54e, #D97706);
+    }
+    @media (max-width: 768px) {
+      .timeline-line {
+        background: linear-gradient(to bottom, #c8b2ea, #b4f54e, #D97706);
+      }
+    }
+
+    /* Journey step glow */
+    .journey-step-build { border-color: rgba(200, 178, 234, 0.2); }
+    .journey-step-build:hover { border-color: rgba(200, 178, 234, 0.4); box-shadow: 0 0 40px rgba(200, 178, 234, 0.08); }
+    .journey-step-evolve { border-color: rgba(180, 245, 78, 0.15); }
+    .journey-step-evolve:hover { border-color: rgba(180, 245, 78, 0.3); box-shadow: 0 0 40px rgba(180, 245, 78, 0.06); }
+    .journey-step-ship { border-color: rgba(217, 119, 6, 0.2); }
+    .journey-step-ship:hover { border-color: rgba(217, 119, 6, 0.4); box-shadow: 0 0 40px rgba(217, 119, 6, 0.08); }
+
+    /* Image hover */
+    .img-overlay {
+      position: relative;
+      overflow: hidden;
+    }
+    .img-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,15,0.3), rgba(10,10,15,0.6));
+      transition: opacity 0.4s ease;
+    }
+    .img-overlay:hover::after { opacity: 0.2; }
+    .img-overlay img {
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .img-overlay:hover img { transform: scale(1.05); }
+
+    /* Card mouse glow */
+    .glow-card { position: relative; }
+    .glow-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(180, 245, 78, 0.04), transparent 40%);
+    }
+    .glow-card:hover::before { opacity: 1; }
+
+    /* Date card highlight */
+    .date-card {
+      transition: all 0.4s ease;
+    }
+    .date-card:hover {
+      border-color: rgba(180, 245, 78, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(180, 245, 78, 0.06);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .mobile-menu.open { transform: translateX(0); }
+
+    /* Section divider */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent);
+    }
+
+    /* Stat number */
+    .stat-number {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    /* Schedule day */
+    .schedule-day { transition: all 0.3s ease; }
+    .schedule-day:hover { background: rgba(26, 26, 36, 0.6); }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav id="navbar" class="nav-blur fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center">
+        <img src="assets/vibelabs-logo-white.png" alt="Vibelabs" class="h-5">
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#concept" class="nav-link">Concept</a>
+        <a href="#journey" class="nav-link">Journey</a>
+        <a href="#schedule" class="nav-link">Schedule</a>
+        <a href="#venue" class="nav-link">Venue</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </div>
+
+      <!-- Desktop CTA -->
+      <a href="#pricing" class="hidden md:inline-block cta-btn cta-btn-sm">Reserve Your Spot</a>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-toggle" class="md:hidden text-text-primary p-2" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 bottom-0 w-72 bg-bg/95 backdrop-blur-xl border-l border-white/5 z-50 p-8 flex flex-col gap-6 md:hidden">
+      <button id="menu-close" class="self-end text-text-muted p-2" aria-label="Close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <a href="#concept" class="nav-link text-lg" onclick="closeMobileMenu()">Concept</a>
+      <a href="#journey" class="nav-link text-lg" onclick="closeMobileMenu()">Journey</a>
+      <a href="#schedule" class="nav-link text-lg" onclick="closeMobileMenu()">Schedule</a>
+      <a href="#venue" class="nav-link text-lg" onclick="closeMobileMenu()">Venue</a>
+      <a href="#pricing" class="nav-link text-lg" onclick="closeMobileMenu()">Pricing</a>
+      <a href="#faq" class="nav-link text-lg" onclick="closeMobileMenu()">FAQ</a>
+      <a href="#pricing" class="cta-btn text-center mt-4" onclick="closeMobileMenu()">Reserve Your Spot</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden bg-bg">
+    <!-- Video Background -->
+    <div class="absolute inset-0 z-0">
+      <video autoplay muted loop playsinline class="w-full h-full object-cover" poster="https://images.citybreakcdn.com/image.aspx?ImageId=14544909&width=1920&height=1080&fitaspect=1">
+        <source src="https://framerusercontent.com/assets/5BjJf8OFNVy9POQ9UZvKZru2OJU.mp4" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-b from-bg/55 via-bg/40 to-bg/85"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl">
+      <h1 class="font-display font-900 gradient-text text-5xl sm:text-7xl md:text-8xl lg:text-[110px] leading-[0.95] tracking-tight mb-6" data-aos="fade-up" data-aos-duration="1000">
+        ARCTIC<br>CODING
+      </h1>
+      <p class="font-serif italic text-xl sm:text-2xl md:text-3xl text-text-primary/90 mb-4" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+        Learn, Build &amp; Ship With AI in the Wilderness
+      </p>
+      <p class="font-body text-xs sm:text-sm text-text-muted/60 uppercase tracking-[3px] mb-10" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+        Voss, Norway &nbsp;/&nbsp; May 7–10, 2026 &nbsp;/&nbsp; 25 Spots
+      </p>
+      <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
+        <a href="#pricing" class="cta-btn">Reserve Your Spot</a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 scroll-indicator">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b8b9e" stroke-width="1.5">
+        <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: CONCEPT ============ -->
+  <section id="concept" class="py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <!-- Image -->
+        <div class="img-overlay rounded-2xl" data-aos="fade-right" data-aos-duration="800">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/b3f4d22a-df80-40e2-9918-a1aefe65288e/DJI_0202.jpg"
+            alt="Mjølfjell Lodge aerial view by river in autumn mountains"
+            class="w-full h-[400px] md:h-[520px] object-cover rounded-2xl"
+            loading="lazy"
+          >
+        </div>
+
+        <!-- Text -->
+        <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+          <p class="font-body text-xs text-lime uppercase tracking-[4px] mb-4">The Concept</p>
+          <h2 class="font-serif italic text-4xl md:text-5xl lg:text-6xl text-text-primary mb-6 leading-[1.1]">
+            Code Meets<br>Wilderness
+          </h2>
+          <p class="text-text-muted text-base md:text-lg leading-relaxed mb-10">
+            You don't need to be a developer. Arctic Coding is a 3-night retreat where anyone with an idea learns to build and ship a real app — using vibe coding and AI tools like Lovable and Claude Code. No prior coding experience needed. Just bring your idea and a laptop.
+          </p>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-6">
+            <div>
+              <div class="stat-number text-4xl md:text-5xl text-lime mb-2">3</div>
+              <div class="text-xs text-text-muted uppercase tracking-wider">Nights</div>
+              <div class="text-sm text-text-primary/70 mt-1">Deep work in nature</div>
+            </div>
+            <div>
+              <div class="stat-number text-4xl md:text-5xl text-lime mb-2">~25</div>
+              <div class="text-xs text-text-muted uppercase tracking-wider">Builders</div>
+              <div class="text-sm text-text-primary/70 mt-1">Intimate group</div>
+            </div>
+            <div>
+              <div class="stat-number text-4xl md:text-5xl text-lime mb-2">1</div>
+              <div class="text-xs text-text-muted uppercase tracking-wider">Mission</div>
+              <div class="text-sm text-text-primary/70 mt-1">Ship something real</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-7xl mx-auto"></div>
+
+  <!-- ============ SECTION 3: THE JOURNEY ============ -->
+  <section id="journey" class="py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <p class="font-body text-xs text-lime uppercase tracking-[4px] mb-4">The Journey</p>
+        <h2 class="font-serif italic text-4xl md:text-5xl lg:text-6xl text-text-primary leading-[1.1]">
+          From Idea to Shipped
+        </h2>
+        <p class="text-text-muted mt-4 max-w-xl mx-auto">No coding experience? No problem. You'll learn vibe coding and AI-assisted development step by step — and leave with a real, shipped product.</p>
+      </div>
+
+      <!-- Journey Steps -->
+      <div class="grid md:grid-cols-3 gap-8 relative">
+        <!-- Connecting line (desktop) -->
+        <div class="hidden md:block absolute top-1/2 left-[16%] right-[16%] h-[2px] timeline-line opacity-20" style="transform: translateY(-50%);"></div>
+
+        <!-- Step 1: Build -->
+        <div class="glass glass-hover glow-card rounded-2xl p-8 journey-step-build relative" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-12 h-12 rounded-xl bg-lovable/10 flex items-center justify-center mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c8b2ea" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="text-xs font-body text-lovable uppercase tracking-[3px] mb-2">Step 1</div>
+          <h3 class="font-display font-bold text-xl text-text-primary mb-3">Build</h3>
+          <p class="text-text-muted text-sm leading-relaxed">
+            Learn to use Lovable — describe what you want in plain language, and AI builds it for you. Go from idea to working app in hours. Zero coding needed.
+          </p>
+          <div class="mt-6 flex items-center gap-2 text-xs text-text-muted">
+            <span class="w-2 h-2 rounded-full bg-lovable"></span>
+            Lovable
+          </div>
+        </div>
+
+        <!-- Step 2: Iterate -->
+        <div class="glass glass-hover glow-card rounded-2xl p-8 journey-step-evolve relative" data-aos="fade-up" data-aos-delay="150">
+          <div class="w-12 h-12 rounded-xl bg-lime/10 flex items-center justify-center mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4f54e" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="text-xs font-body text-lime uppercase tracking-[3px] mb-2">Step 2</div>
+          <h3 class="font-display font-bold text-xl text-text-primary mb-3">Iterate</h3>
+          <p class="text-text-muted text-sm leading-relaxed">
+            Test and improve your ideas. Get feedback from fellow builders, refine your concept — then learn to use Claude Code and develop your prototype into a real product.
+          </p>
+          <div class="mt-6 flex items-center gap-2 text-xs text-text-muted">
+            <span class="w-2 h-2 rounded-full bg-lovable"></span>
+            Lovable <span class="text-text-muted/50">&rarr;</span> <span class="w-2 h-2 rounded-full bg-claude"></span> Claude Code
+          </div>
+        </div>
+
+        <!-- Step 3: Ship -->
+        <div class="glass glass-hover glow-card rounded-2xl p-8 journey-step-ship relative" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-12 h-12 rounded-xl bg-claude/10 flex items-center justify-center mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+          <div class="text-xs font-body text-claude uppercase tracking-[3px] mb-2">Step 3</div>
+          <h3 class="font-display font-bold text-xl text-text-primary mb-3">Ship</h3>
+          <p class="text-text-muted text-sm leading-relaxed">
+            Deploy your app to the world with Claude Code. Polish, launch, and leave the retreat with something real and live.
+          </p>
+          <div class="mt-6 flex items-center gap-2 text-xs text-text-muted">
+            <span class="w-2 h-2 rounded-full bg-claude"></span>
+            Claude Code
+          </div>
+        </div>
+      </div>
+
+      <!-- Mid-page CTA -->
+      <div class="text-center mt-16" data-aos="fade-up">
+        <a href="#pricing" class="cta-btn">Reserve Your Spot</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-7xl mx-auto"></div>
+
+  <!-- ============ SECTION 4: SCHEDULE ============ -->
+  <section id="schedule" class="py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <p class="font-body text-xs text-lime uppercase tracking-[4px] mb-4">The Experience</p>
+        <h2 class="font-serif italic text-4xl md:text-5xl lg:text-6xl text-text-primary leading-[1.1]">
+          72 Hours to Learn, Build<br>& Change Everything
+        </h2>
+      </div>
+
+      <!-- Schedule Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Day 1 - Thursday -->
+        <div class="glass rounded-2xl p-6 schedule-day glow-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-lime/10 flex items-center justify-center font-display font-bold text-lime text-sm">01</div>
+            <div>
+              <div class="text-sm font-bold text-text-primary">Thursday</div>
+              <div class="text-xs text-text-muted uppercase tracking-wider">Arrive & Ignite</div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="text-xs text-text-muted/70 uppercase tracking-wider mb-1">Evening</div>
+              <p class="text-sm text-text-muted">Train arrives at Mjølfjell, check-in, settle in, welcome dinner and introductions</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2 - Friday -->
+        <div class="glass rounded-2xl p-6 schedule-day glow-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-lime/10 flex items-center justify-center font-display font-bold text-lime text-sm">02</div>
+            <div>
+              <div class="text-sm font-bold text-text-primary">Friday</div>
+              <div class="text-xs text-text-muted uppercase tracking-wider">Build</div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="text-xs text-text-muted/70 uppercase tracking-wider mb-1">Morning</div>
+              <p class="text-sm text-text-muted">Breakfast, kickoff workshop — build your first app with Lovable</p>
+            </div>
+            <div>
+              <div class="text-xs text-text-muted/70 uppercase tracking-wider mb-1">Afternoon</div>
+              <p class="text-sm text-text-muted">Mountain activity break (hiking/exploring), back to building</p>
+            </div>
+            <div>
+              <div class="text-xs text-text-muted/70 uppercase tracking-wider mb-1">Evening</div>
+              <p class="text-sm text-text-muted">Progress demos, dinner, level up to Claude Code</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3 - Saturday -->
+        <div class="glass rounded-2xl p-6 schedule-day glow-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-lime/10 flex items-center justify-center font-display font-bold text-lime text-sm">03</div>
+            <div>
+              <div class="text-sm font-bold text-text-primary">Saturday</div>
+              <div class="text-xs text-text-muted uppercase tracking-wider">Ship</div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="text-xs text-text-muted/70 uppercase tracking-wider mb-1">Morning</div>
+              <p class="text-sm text-text-muted">Deep work sprint with Claude Code, polish and deploy</p>
+            </div>
+            <div>
+              <div class="text-xs text-text-muted/70 uppercase tracking-wider mb-1">Afternoon</div>
+              <p class="text-sm text-text-muted">More building + optional adventure</p>
+            </div>
+            <div>
+              <div class="text-xs text-text-muted/70 uppercase tracking-wider mb-1">Evening</div>
+              <p class="text-sm text-text-muted">Sauna, dinner, late-night shipping</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 4 - Sunday -->
+        <div class="glass rounded-2xl p-6 schedule-day glow-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-lime/10 flex items-center justify-center font-display font-bold text-lime text-sm">04</div>
+            <div>
+              <div class="text-sm font-bold text-text-primary">Sunday</div>
+              <div class="text-xs text-text-muted uppercase tracking-wider">Demo & Depart</div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="text-xs text-text-muted/70 uppercase tracking-wider mb-1">Morning</div>
+              <p class="text-sm text-text-muted">Final polish, prepare demos</p>
+            </div>
+            <div>
+              <div class="text-xs text-text-muted/70 uppercase tracking-wider mb-1">Late Morning</div>
+              <p class="text-sm text-text-muted">Demo Day — present what you built</p>
+            </div>
+            <div>
+              <div class="text-xs text-text-muted/70 uppercase tracking-wider mb-1">Afternoon</div>
+              <p class="text-sm text-text-muted">Celebration lunch, group photo, departures</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-7xl mx-auto"></div>
+
+  <!-- ============ SECTION 5: VENUE ============ -->
+  <section id="venue" class="py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Hero image with text overlay -->
+      <div class="relative rounded-2xl overflow-hidden mb-16" data-aos="fade-up">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/94301bbf-1e0a-4836-8214-fec67c712155/DJI_0184.jpg"
+          alt="Aerial view of Mjølfjell Lodge and Raundalen valley"
+          class="w-full h-[350px] md:h-[480px] object-cover"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-8 md:p-12">
+          <p class="font-body text-xs text-lime uppercase tracking-[4px] mb-3">Your Base Camp</p>
+          <h2 class="font-serif italic text-3xl md:text-5xl text-text-primary leading-[1.1] mb-3">
+            Arctic Coliving<br>Voss Mjølfjell Lodge
+          </h2>
+          <p class="text-text-muted max-w-lg text-sm md:text-base">
+            Built as a peace project by students in 1939, the Mjølfjell Lodge sits in the Raundalen valley between the epic fjords of Sogn and Hardanger in western Norway.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="glass glass-hover glow-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-10 h-10 rounded-lg bg-lime/10 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b4f54e" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="font-body font-bold text-text-primary mb-2">Coworking Space</h3>
+          <p class="text-text-muted text-sm">Desks, external monitors, and fast WiFi for ~20 people. Purpose-built for focused work.</p>
+        </div>
+
+        <div class="glass glass-hover glow-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="75">
+          <div class="w-10 h-10 rounded-lg bg-lime/10 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b4f54e" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="font-body font-bold text-text-primary mb-2">Private Rooms</h3>
+          <p class="text-text-muted text-sm">Up to 19 rooms, 9 with ensuite bathrooms. Rest well, build better.</p>
+        </div>
+
+        <div class="glass glass-hover glow-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="150">
+          <div class="w-10 h-10 rounded-lg bg-lime/10 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b4f54e" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3 class="font-body font-bold text-text-primary mb-2">All Meals Included</h3>
+          <p class="text-text-muted text-sm">Breakfast, lunch, and dinner prepared by the in-house chef. Fuel for building.</p>
+        </div>
+
+        <div class="glass glass-hover glow-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="225">
+          <div class="w-10 h-10 rounded-lg bg-lime/10 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b4f54e" stroke-width="1.5"><path d="M12 2L2 22h20L12 2z"/><path d="M12 8v6"/></svg>
+          </div>
+          <h3 class="font-body font-bold text-text-primary mb-2">Mountain Access</h3>
+          <p class="text-text-muted text-sm">Hiking, skiing, and exploring. 30 minutes from Voss resort. Nature at your doorstep.</p>
+        </div>
+
+        <div class="glass glass-hover glow-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-10 h-10 rounded-lg bg-lime/10 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b4f54e" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+          <h3 class="font-body font-bold text-text-primary mb-2">On-Site Amenities</h3>
+          <p class="text-text-muted text-sm">Sauna, pizza oven, coffee roastery, and a dedicated events space.</p>
+        </div>
+
+        <div class="glass glass-hover glow-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="375">
+          <div class="w-10 h-10 rounded-lg bg-lime/10 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b4f54e" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="font-body font-bold text-text-primary mb-2">Easy Travel</h3>
+          <p class="text-text-muted text-sm">Own train stop at Mjølfjell. 2 hours from Bergen. Airport shuttles arranged.</p>
+        </div>
+      </div>
+
+      <!-- Image Gallery -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12" data-aos="fade-up" data-aos-delay="100">
+        <div class="img-overlay rounded-xl">
+          <img src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/0f588531-a48c-47ab-aa42-7869f901a3b5/194630687.jpg" alt="Mjølfjell Lodge exterior in winter snow" class="w-full h-48 object-cover rounded-xl" loading="lazy">
+        </div>
+        <div class="img-overlay rounded-xl">
+          <img src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/ab08a2de-9116-4a8f-9b3e-6c7e73e719c3/547611137.jpg" alt="Private room with mountain view" class="w-full h-48 object-cover rounded-xl" loading="lazy">
+        </div>
+        <div class="img-overlay rounded-xl">
+          <img src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/8a573e3c-9e68-4667-972e-6e8e7af41706/Lunch-servering-kenneth-jacob-IMG_1907-small.jpg" alt="Chef preparing dinner at the lodge" class="w-full h-48 object-cover rounded-xl" loading="lazy">
+        </div>
+        <div class="img-overlay rounded-xl">
+          <img src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/133fe0ab-d21b-4f9d-8eb4-7cab64ac1d04/Snow-Fire-Stars.jpg" alt="Campfire under starry sky in snow" class="w-full h-48 object-cover rounded-xl" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-7xl mx-auto"></div>
+
+  <!-- ============ SECTION 6: PRICING ============ -->
+  <section id="pricing" class="py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <p class="font-body text-xs text-lime uppercase tracking-[4px] mb-4">Dates & Pricing</p>
+        <h2 class="font-serif italic text-4xl md:text-5xl lg:text-6xl text-text-primary leading-[1.1]">
+          All-Inclusive. All-In.
+        </h2>
+      </div>
+
+      <!-- Date Card -->
+      <div class="max-w-md mx-auto mb-12">
+        <div class="glass date-card glow-card rounded-2xl p-8 text-center border border-white/5" data-aos="fade-up">
+          <h3 class="font-display font-bold text-2xl text-text-primary mb-1">May 7–10, 2026</h3>
+          <p class="text-text-muted text-sm mb-6">Thursday – Sunday</p>
+          <div class="font-display font-bold text-4xl text-text-primary mb-1">15,000 <span class="text-lg text-text-muted">NOK</span></div>
+          <p class="text-xs text-text-muted">per person / 3 nights</p>
+          <a href="#pricing" class="cta-btn mt-6 block">Reserve Your Spot</a>
+        </div>
+      </div>
+
+      <p class="text-center text-text-muted text-sm mb-12" data-aos="fade-up">(approx. EUR 1,300 / USD 1,400)</p>
+
+      <!-- What's Included -->
+      <div class="max-w-2xl mx-auto" data-aos="fade-up">
+        <h3 class="font-body font-bold text-lg text-text-primary text-center mb-8">What's Included</h3>
+        <div class="grid sm:grid-cols-2 gap-x-10 gap-y-4">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-lime flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-text-muted text-sm">Private room at the lodge</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-lime flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-text-muted text-sm">All meals (breakfast, lunch, dinner)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-lime flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-text-muted text-sm">Coworking space with monitors & WiFi</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-lime flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-text-muted text-sm">Workshop facilitation & mentorship</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-lime flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-text-muted text-sm">Mountain activity session</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-lime flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-text-muted text-sm">Demo Day with feedback</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-lime flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-text-muted text-sm">Sauna & lodge amenities</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-lime flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-text-muted text-sm">Train station pickup</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12" data-aos="fade-up">
+        <p class="text-text-primary font-body font-bold text-sm mb-6">Limited to 25 spots per retreat</p>
+        <a href="#pricing" class="cta-btn">Reserve Your Spot</a>
+        <p class="text-text-muted text-xs mt-6">Interested in sponsoring or group bookings? <a href="mailto:hello@vibelabs.no" class="text-lime hover:underline">Get in touch</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-7xl mx-auto"></div>
+
+  <!-- ============ SECTION 7: HOSTED BY ============ -->
+  <section id="hosted-by" class="py-24 md:py-32 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <div data-aos="fade-up">
+        <!-- Vibelabs Logo -->
+        <div class="mb-6">
+          <img src="assets/vibelabs-logo-white.png" alt="Vibelabs" class="h-10 md:h-12 mx-auto">
+        </div>
+        <p class="text-text-muted text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-12">
+          Vibelabs helps people and companies build real products with AI. Arctic Coding is our flagship build retreat.
+        </p>
+      </div>
+
+      <!-- Team -->
+      <div class="flex flex-wrap justify-center gap-12 md:gap-16 mb-12" data-aos="fade-up" data-aos-delay="100">
+        <div class="text-center max-w-[200px]">
+          <img src="assets/christian.jpg" alt="Christian von Hanno" class="w-24 h-24 rounded-full object-cover border-2 border-white/10 mx-auto mb-4">
+          <div class="text-sm font-body font-bold text-text-primary">Christian von Hanno</div>
+          <div class="text-xs text-lime mb-2">Design Director</div>
+          <p class="text-text-muted text-xs leading-relaxed">15+ years in design and product. From MUNCH and DNB to AI-driven prototyping.</p>
+        </div>
+        <div class="text-center max-w-[200px]">
+          <img src="assets/simon.png" alt="Simon Strumse" class="w-24 h-24 rounded-full object-cover border-2 border-white/10 mx-auto mb-4">
+          <div class="text-sm font-body font-bold text-text-primary">Simon Strumse</div>
+          <div class="text-xs text-lime mb-2">Technology Strategist</div>
+          <p class="text-text-muted text-xs leading-relaxed">Serial founder. Pioneer of vibecoding in Norway. Behind the country's most popular idea-to-code course.</p>
+        </div>
+        <div class="text-center max-w-[200px]">
+          <img src="assets/jonas.png" alt="Jonas Berthelsen" class="w-24 h-24 rounded-full object-cover border-2 border-white/10 mx-auto mb-4">
+          <div class="text-sm font-body font-bold text-text-primary">Jonas Berthelsen</div>
+          <div class="text-xs text-lime mb-2">Sales & Partnerships</div>
+          <p class="text-text-muted text-xs leading-relaxed">Tech sales background. Makes complex topics accessible. Believes everyone can build with AI.</p>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center gap-3 text-text-muted text-sm" data-aos="fade-up" data-aos-delay="200">
+        <span>In partnership with</span>
+        <span class="font-body font-bold text-text-primary">Arctic Coliving</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-7xl mx-auto"></div>
+
+  <!-- ============ SECTION 8: FAQ ============ -->
+  <section id="faq" class="py-24 md:py-32 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <p class="font-body text-xs text-lime uppercase tracking-[4px] mb-4">FAQ</p>
+        <h2 class="font-serif italic text-4xl md:text-5xl text-text-primary leading-[1.1]">
+          Questions & Answers
+        </h2>
+      </div>
+
+      <div class="space-y-3" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- FAQ Item 1 -->
+        <div class="glass rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" onclick="toggleFAQ(this)">
+            <span class="font-body font-bold text-text-primary text-sm pr-4">Do I need coding experience?</span>
+            <svg class="w-5 h-5 text-lime flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="text-text-muted text-sm pb-5">Not at all — this retreat is designed for non-coders. You'll learn vibe coding: describing what you want and letting AI build it for you. We start with Lovable (zero code needed) and progress to Claude Code. You'll be surprised what you can build in a weekend.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="glass rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" onclick="toggleFAQ(this)">
+            <span class="font-body font-bold text-text-primary text-sm pr-4">What should I bring?</span>
+            <svg class="w-5 h-5 text-lime flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="text-text-muted text-sm pb-5">Laptop, charger, warm clothes. Everything else is provided. Bring a power adapter (Type F) if traveling from outside Norway.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="glass rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" onclick="toggleFAQ(this)">
+            <span class="font-body font-bold text-text-primary text-sm pr-4">How do I get there?</span>
+            <svg class="w-5 h-5 text-lime flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="text-text-muted text-sm pb-5">The lodge has its own train stop (Mjølfjell station). Take the Bergen Railway from Bergen (~2h) or Oslo (~5-7h). Airport shuttles from Bergen Flesland can be arranged.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="glass rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" onclick="toggleFAQ(this)">
+            <span class="font-body font-bold text-text-primary text-sm pr-4">What kind of things will people build?</span>
+            <svg class="w-5 h-5 text-lime flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="text-text-muted text-sm pb-5">SaaS tools, mobile apps, portfolio sites, AI automations, internal tools, games. The only rule: ship something.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="glass rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" onclick="toggleFAQ(this)">
+            <span class="font-body font-bold text-text-primary text-sm pr-4">Is this a competition?</span>
+            <svg class="w-5 h-5 text-lime flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="text-text-muted text-sm pb-5">There's a Demo Day where everyone presents, but the goal is shipping and learning, not competing. We celebrate everything that gets built.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 6 -->
+        <div class="glass rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" onclick="toggleFAQ(this)">
+            <span class="font-body font-bold text-text-primary text-sm pr-4">Can I come alone?</span>
+            <svg class="w-5 h-5 text-lime flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="text-text-muted text-sm pb-5">Most people do. You'll meet fellow builders and leave with a network.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 9: FINAL CTA ============ -->
+  <section class="relative py-32 md:py-44 px-6 overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.citybreakcdn.com/image.aspx?ImageId=14544978&width=1400&height=800&fitaspect=1"
+        alt="Group bonfire in snowy mountains under stars"
+        class="w-full h-full object-cover"
+        loading="lazy"
+      >
+      <div class="absolute inset-0 bg-bg/85"></div>
+    </div>
+
+    <div class="relative z-10 max-w-3xl mx-auto text-center">
+      <h2 class="font-serif italic text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-text-primary leading-[1.15] mb-6" data-aos="fade-up">
+        The mountains are calling.<br>Your app is waiting.
+      </h2>
+      <p class="text-text-muted text-sm uppercase tracking-[3px] mb-10" data-aos="fade-up" data-aos-delay="150">
+        May 2026 &nbsp;/&nbsp; Voss, Norway &nbsp;/&nbsp; 25 Spots
+      </p>
+      <div data-aos="fade-up" data-aos-delay="300">
+        <a href="#pricing" class="cta-btn">Reserve Your Spot</a>
+      </div>
+      <p class="text-text-muted text-sm mt-8" data-aos="fade-up" data-aos-delay="400">
+        <a href="mailto:hello@vibelabs.no" class="hover:text-lime transition-colors">hello@vibelabs.no</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 10: FOOTER ============ -->
+  <footer class="border-t border-white/5 py-12 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <!-- Logos -->
+        <div class="flex items-center gap-4 text-sm text-text-muted">
+          <img src="assets/vibelabs-logo-white.png" alt="Vibelabs" class="h-5">
+          <span>&times;</span>
+          <span class="font-body font-bold text-text-primary">Arctic Coliving</span>
+        </div>
+
+        <!-- Social -->
+        <div class="flex items-center gap-5">
+          <a href="#" class="text-text-muted hover:text-lime transition-colors" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="text-text-muted hover:text-lime transition-colors" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="text-text-muted hover:text-lime transition-colors" aria-label="X / Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l11.733 16H20L8.267 4H4z"/><path d="M4 20l6.768-6.768M20 4l-6.768 6.768"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-text-muted text-center md:text-left">
+          Arctic Coding is a Vibelabs event at Arctic Coliving, Voss, Norway.
+        </p>
+        <p class="text-xs text-text-muted">&copy; 2026 Vibelabs</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    // Initialize AOS
+    AOS.init({
+      once: true,
+      offset: 80,
+      duration: 700,
+      easing: 'ease-out-cubic',
+    });
+
+    // FAQ Accordion
+    function toggleFAQ(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = answer.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-toggle').forEach(t => t.classList.remove('open'));
+
+      // Open clicked (if it was closed)
+      if (!isOpen) {
+        answer.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+
+    // Mobile Menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
+    menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // Card Mouse Glow Effect
+    document.querySelectorAll('.glow-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+      });
+    });
+
+    // Navbar scroll effect
+    let lastScroll = 0;
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 100) {
+        navbar.style.borderBottomColor = 'rgba(255,255,255,0.08)';
+      } else {
+        navbar.style.borderBottomColor = 'rgba(255,255,255,0.05)';
+      }
+      lastScroll = currentScroll;
+    }, { passive: true });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
