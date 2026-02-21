@@ -313,7 +313,7 @@
       </div>
 
       <!-- Desktop CTA -->
-      <a href="#pricing" class="hidden md:inline-block cta-btn cta-btn-sm">Reserve Your Spot</a>
+      <a href="#pricing" class="hidden md:inline-block cta-btn cta-btn-sm">Apply to Join</a>
 
       <!-- Mobile Hamburger -->
       <button id="menu-toggle" class="md:hidden text-text-primary p-2" aria-label="Menu">
@@ -339,7 +339,7 @@
       <a href="#venue" class="nav-link text-lg" onclick="closeMobileMenu()">Venue</a>
       <a href="#pricing" class="nav-link text-lg" onclick="closeMobileMenu()">Pricing</a>
       <a href="#faq" class="nav-link text-lg" onclick="closeMobileMenu()">FAQ</a>
-      <a href="#pricing" class="cta-btn text-center mt-4" onclick="closeMobileMenu()">Reserve Your Spot</a>
+      <a href="#pricing" class="cta-btn text-center mt-4" onclick="closeMobileMenu()">Apply to Join</a>
     </div>
   </nav>
 
@@ -363,7 +363,7 @@
         Voss, Norway &nbsp;/&nbsp; April 23–26, 2026 &nbsp;/&nbsp; 25 Spots
       </p>
       <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
-        <a href="#pricing" class="cta-btn">Reserve Your Spot</a>
+        <a href="#pricing" class="cta-btn">Apply to Join</a>
       </div>
     </div>
 
@@ -479,7 +479,7 @@
 
       <!-- Mid-page CTA -->
       <div class="text-center mt-16" data-aos="fade-up">
-        <a href="#pricing" class="cta-btn">Reserve Your Spot</a>
+        <a href="#pricing" class="cta-btn">Apply to Join</a>
       </div>
     </div>
   </section>
@@ -718,20 +718,51 @@
         </div>
       </div>
 
-      <!-- Image Gallery -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12" data-aos="fade-up" data-aos-delay="100">
-        <div class="img-overlay rounded-xl">
-          <img src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/0f588531-a48c-47ab-aa42-7869f901a3b5/194630687.jpg" alt="Mjølfjell Lodge exterior in winter snow" class="w-full h-48 object-cover rounded-xl" loading="lazy">
+      <!-- Bento Grid Gallery -->
+      <div class="grid grid-cols-2 md:grid-cols-3 auto-rows-[160px] gap-3 mt-12" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Video 1:1 - 2 rows to make it square -->
+        <div class="row-span-2 rounded-2xl overflow-hidden">
+          <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="w-full h-full object-cover" poster="assets/dining-room.jpg">
+            <source src="assets/community-video.mp4" type="video/mp4">
+          </video>
         </div>
-        <div class="img-overlay rounded-xl">
-          <img src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/ab08a2de-9116-4a8f-9b3e-6c7e73e719c3/547611137.jpg" alt="Private room with mountain view" class="w-full h-48 object-cover rounded-xl" loading="lazy">
+
+        <!-- Dining room -->
+        <div class="img-overlay rounded-2xl overflow-hidden">
+          <img src="assets/dining-room.jpg" alt="Warm wooden dining room at the lodge" class="w-full h-full object-cover" loading="lazy">
         </div>
-        <div class="img-overlay rounded-xl">
-          <img src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/8a573e3c-9e68-4667-972e-6e8e7af41706/Lunch-servering-kenneth-jacob-IMG_1907-small.jpg" alt="Chef preparing dinner at the lodge" class="w-full h-48 object-cover rounded-xl" loading="lazy">
+
+        <!-- Fireplace lounge -->
+        <div class="img-overlay rounded-2xl overflow-hidden">
+          <img src="assets/fireplace-lounge.jpg" alt="Cozy fireplace lounge with historic artwork" class="w-full h-full object-cover" loading="lazy">
         </div>
-        <div class="img-overlay rounded-xl">
-          <img src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/133fe0ab-d21b-4f9d-8eb4-7cab64ac1d04/Snow-Fire-Stars.jpg" alt="Campfire under starry sky in snow" class="w-full h-48 object-cover rounded-xl" loading="lazy">
+
+        <!-- Bedroom -->
+        <div class="img-overlay rounded-2xl overflow-hidden">
+          <img src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/ab08a2de-9116-4a8f-9b3e-6c7e73e719c3/547611137.jpg" alt="Private bedroom with mountain view" class="w-full h-full object-cover" loading="lazy">
         </div>
+
+        <!-- Mountain climber -->
+        <div class="img-overlay rounded-2xl overflow-hidden">
+          <img src="assets/mountain-climber.jpg" alt="Climber on snowy mountain peak" class="w-full h-full object-cover" loading="lazy">
+        </div>
+
+        <!-- Ski room -->
+        <div class="img-overlay rounded-2xl overflow-hidden">
+          <img src="assets/ski-room.jpg" alt="Heritage ski room with vintage skis on the wall" class="w-full h-full object-cover" loading="lazy">
+        </div>
+
+        <!-- Mountain biking -->
+        <div class="img-overlay rounded-2xl overflow-hidden">
+          <img src="assets/mountain-biking.jpg" alt="Mountain biking by alpine lake in Voss" class="w-full h-full object-cover" loading="lazy">
+        </div>
+
+        <!-- Campfire -->
+        <div class="img-overlay rounded-2xl overflow-hidden">
+          <img src="https://images.squarespace-cdn.com/content/v1/68f88a428ae55d4cf6736b65/133fe0ab-d21b-4f9d-8eb4-7cab64ac1d04/Snow-Fire-Stars.jpg" alt="Campfire under starry sky in snow" class="w-full h-full object-cover" loading="lazy">
+        </div>
+
       </div>
     </div>
   </section>
@@ -755,7 +786,7 @@
           <p class="text-text-muted text-sm mb-6">Thursday – Sunday</p>
           <div class="font-display font-bold text-4xl text-text-primary mb-1">15,000 <span class="text-lg text-text-muted">NOK</span></div>
           <p class="text-xs text-text-muted">per person / 3 nights</p>
-          <a href="#pricing" class="cta-btn mt-6 block">Reserve Your Spot</a>
+          <a href="#pricing" class="cta-btn mt-6 block">Apply to Join</a>
         </div>
       </div>
 
@@ -955,7 +986,7 @@
         April 23–26, 2026 &nbsp;/&nbsp; Voss, Norway &nbsp;/&nbsp; 25 Spots
       </p>
       <div data-aos="fade-up" data-aos-delay="300">
-        <a href="#pricing" class="cta-btn">Reserve Your Spot</a>
+        <a href="#pricing" class="cta-btn">Apply to Join</a>
       </div>
       <p class="text-text-muted text-sm mt-8" data-aos="fade-up" data-aos-delay="400">
         <a href="mailto:hello@vibelabs.no" class="hover:text-lime transition-colors">hello@vibelabs.no</a>
