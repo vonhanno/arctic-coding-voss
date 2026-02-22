@@ -319,7 +319,7 @@
       </div>
 
       <!-- Desktop CTA -->
-      <a href="#apply" class="hidden md:inline-block cta-btn cta-btn-sm">Apply to Join</a>
+      <a href="#pricing" class="hidden md:inline-block cta-btn cta-btn-sm">Apply to Join</a>
 
       <!-- Mobile Hamburger -->
       <button id="menu-toggle" class="md:hidden text-text-primary p-2" aria-label="Menu">
@@ -345,7 +345,7 @@
       <a href="#venue" class="nav-link text-lg" onclick="closeMobileMenu()">Venue</a>
       <a href="#pricing" class="nav-link text-lg" onclick="closeMobileMenu()">Pricing</a>
       <a href="#faq" class="nav-link text-lg" onclick="closeMobileMenu()">FAQ</a>
-      <a href="#apply" class="cta-btn text-center mt-4" onclick="closeMobileMenu()">Apply to Join</a>
+      <a href="#pricing" class="cta-btn text-center mt-4" onclick="closeMobileMenu()">Apply to Join</a>
     </div>
   </nav>
 
@@ -369,7 +369,7 @@
         Voss, Norway &nbsp;/&nbsp; May 7–10, 2026 &nbsp;/&nbsp; 20 Spots
       </p>
       <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
-        <a href="#apply" class="cta-btn">Apply to Join</a>
+        <a href="#pricing" class="cta-btn">Apply to Join</a>
       </div>
     </div>
 
@@ -644,7 +644,7 @@
 
       <!-- Mid-page CTA -->
       <div class="text-center mt-16" data-aos="fade-up">
-        <a href="#apply" class="cta-btn">Apply to Join</a>
+        <a href="#pricing" class="cta-btn">Apply to Join</a>
       </div>
     </div>
   </section>
@@ -798,7 +798,53 @@
           <div class="font-display font-bold text-4xl text-lime mb-1">9,950 <span class="text-lg text-text-muted">NOK</span></div>
           <p class="text-xs text-lime/80 font-bold uppercase tracking-wider mb-1">Early Bird Price</p>
           <p class="text-xs text-text-muted">per person / 3 nights</p>
-          <a href="#pricing" class="cta-btn mt-6 block">Apply to Join</a>
+          <button id="pricing-apply-btn" class="cta-btn mt-6 block w-full" onclick="document.getElementById('pricing-form').classList.remove('hidden'); this.classList.add('hidden');">Apply to Join</button>
+
+          <!-- Inline form (hidden by default) -->
+          <div id="pricing-form" class="hidden mt-8">
+            <form id="application-form" class="space-y-5 text-left">
+              <div>
+                <label for="form-name" class="block text-xs text-text-muted uppercase tracking-wider mb-2">Name <span class="text-lime">*</span></label>
+                <input type="text" id="form-name" name="name" required
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted/40 focus:outline-none focus:border-lime/40 transition-colors"
+                  placeholder="Your full name">
+              </div>
+              <div>
+                <label for="form-email" class="block text-xs text-text-muted uppercase tracking-wider mb-2">Email <span class="text-lime">*</span></label>
+                <input type="email" id="form-email" name="email" required
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted/40 focus:outline-none focus:border-lime/40 transition-colors"
+                  placeholder="you@example.com">
+              </div>
+              <div>
+                <label for="form-phone" class="block text-xs text-text-muted uppercase tracking-wider mb-2">Phone <span class="text-text-muted/40 text-[10px] normal-case tracking-normal">(optional)</span></label>
+                <input type="tel" id="form-phone" name="phone"
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted/40 focus:outline-none focus:border-lime/40 transition-colors"
+                  placeholder="+47 000 00 000">
+              </div>
+              <div>
+                <label for="form-motivation" class="block text-xs text-text-muted uppercase tracking-wider mb-2">What is your motivation to join? <span class="text-lime">*</span></label>
+                <textarea id="form-motivation" name="motivation" required rows="4"
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted/40 focus:outline-none focus:border-lime/40 transition-colors resize-none"
+                  placeholder="Tell us what you want to build, learn, or achieve..."></textarea>
+              </div>
+              <div>
+                <label for="form-source" class="block text-xs text-text-muted uppercase tracking-wider mb-2">How did you hear about us? <span class="text-text-muted/40 text-[10px] normal-case tracking-normal">(optional)</span></label>
+                <input type="text" id="form-source" name="source"
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted/40 focus:outline-none focus:border-lime/40 transition-colors"
+                  placeholder="Social media, friend, event...">
+              </div>
+              <div class="pt-2">
+                <button type="submit" id="form-submit" class="cta-btn w-full text-center">Send Application</button>
+              </div>
+              <div id="form-success" class="hidden text-center py-6">
+                <div class="text-lime text-lg font-bold mb-2">Application received!</div>
+                <p class="text-text-muted text-sm">We'll be in touch soon. Get ready to build.</p>
+              </div>
+              <div id="form-error" class="hidden text-center py-4">
+                <p class="text-red-400 text-sm">Something went wrong. Please try again or email us at <a href="mailto:hello@vibelabs.no" class="underline">hello@vibelabs.no</a>.</p>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 
@@ -846,78 +892,6 @@
         <p class="text-text-muted text-xs">Private room upgrade available for an additional charge.</p>
         <p class="text-text-muted text-xs mt-6">Interested in sponsoring or group bookings? <a href="mailto:hello@vibelabs.no" class="text-lime hover:underline">Get in touch</a>.</p>
       </div>
-    </div>
-  </section>
-
-  <div class="section-divider max-w-7xl mx-auto"></div>
-
-  <!-- ============ SECTION 6B: APPLICATION FORM ============ -->
-  <section id="apply" class="py-24 md:py-32 px-6">
-    <div class="max-w-2xl mx-auto">
-      <div class="text-center mb-12" data-aos="fade-up">
-        <p class="font-body text-xs text-lime uppercase tracking-[4px] mb-4">Apply</p>
-        <h2 class="font-serif italic text-4xl md:text-5xl lg:text-6xl text-text-primary leading-[1.1]">
-          Reserve Your Spot
-        </h2>
-      </div>
-
-      <form id="application-form" class="glass rounded-2xl p-8 md:p-10 space-y-6" data-aos="fade-up" data-aos-delay="100">
-        <!-- Name -->
-        <div>
-          <label for="form-name" class="block text-xs text-text-muted uppercase tracking-wider mb-2">Name <span class="text-lime">*</span></label>
-          <input type="text" id="form-name" name="name" required
-            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted/40 focus:outline-none focus:border-lime/40 transition-colors"
-            placeholder="Your full name">
-        </div>
-
-        <!-- Email -->
-        <div>
-          <label for="form-email" class="block text-xs text-text-muted uppercase tracking-wider mb-2">Email <span class="text-lime">*</span></label>
-          <input type="email" id="form-email" name="email" required
-            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted/40 focus:outline-none focus:border-lime/40 transition-colors"
-            placeholder="you@example.com">
-        </div>
-
-        <!-- Phone -->
-        <div>
-          <label for="form-phone" class="block text-xs text-text-muted uppercase tracking-wider mb-2">Phone <span class="text-text-muted/40 text-[10px] normal-case tracking-normal">(optional)</span></label>
-          <input type="tel" id="form-phone" name="phone"
-            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted/40 focus:outline-none focus:border-lime/40 transition-colors"
-            placeholder="+47 000 00 000">
-        </div>
-
-        <!-- Motivation -->
-        <div>
-          <label for="form-motivation" class="block text-xs text-text-muted uppercase tracking-wider mb-2">What is your motivation to join? <span class="text-lime">*</span></label>
-          <textarea id="form-motivation" name="motivation" required rows="4"
-            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted/40 focus:outline-none focus:border-lime/40 transition-colors resize-none"
-            placeholder="Tell us what you want to build, learn, or achieve..."></textarea>
-        </div>
-
-        <!-- How heard -->
-        <div>
-          <label for="form-source" class="block text-xs text-text-muted uppercase tracking-wider mb-2">How did you hear about us? <span class="text-text-muted/40 text-[10px] normal-case tracking-normal">(optional)</span></label>
-          <input type="text" id="form-source" name="source"
-            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-text-primary text-sm placeholder-text-muted/40 focus:outline-none focus:border-lime/40 transition-colors"
-            placeholder="Social media, friend, event...">
-        </div>
-
-        <!-- Submit -->
-        <div class="pt-2">
-          <button type="submit" id="form-submit" class="cta-btn w-full text-center">Apply to Join</button>
-        </div>
-
-        <!-- Success message (hidden by default) -->
-        <div id="form-success" class="hidden text-center py-6">
-          <div class="text-lime text-lg font-bold mb-2">Application received!</div>
-          <p class="text-text-muted text-sm">We'll be in touch soon. Get ready to build.</p>
-        </div>
-
-        <!-- Error message (hidden by default) -->
-        <div id="form-error" class="hidden text-center py-4">
-          <p class="text-red-400 text-sm">Something went wrong. Please try again or email us at <a href="mailto:hello@vibelabs.no" class="underline">hello@vibelabs.no</a>.</p>
-        </div>
-      </form>
     </div>
   </section>
 
@@ -1072,7 +1046,7 @@
         May 7–10, 2026 &nbsp;/&nbsp; Voss, Norway &nbsp;/&nbsp; 20 Spots
       </p>
       <div data-aos="fade-up" data-aos-delay="300">
-        <a href="#apply" class="cta-btn">Apply to Join</a>
+        <a href="#pricing" class="cta-btn">Apply to Join</a>
       </div>
       <p class="text-text-muted text-sm mt-8" data-aos="fade-up" data-aos-delay="400">
         <a href="mailto:hello@vibelabs.no" class="hover:text-lime transition-colors">hello@vibelabs.no</a>
@@ -1235,11 +1209,13 @@
       };
 
       try {
+        const formData = new FormData();
+        Object.entries(data).forEach(([key, val]) => formData.append(key, val));
+
         await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          body: formData,
         });
 
         // Hide form fields, show success
