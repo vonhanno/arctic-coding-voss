@@ -2,3 +2,4 @@
 *.webloc
 *.pdf
 image-review/
+.vercel
